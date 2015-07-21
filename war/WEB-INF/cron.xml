@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+	<cron>
+		<url>/pair_user_shop</url>
+		<description>calculates shop preferences for every users</description>
+		<schedule>every 6 hours synchronized</schedule>
+		<timezone>Asia/Seoul</timezone>
+	</cron>
+	<cron>
+		<url>/set_shop_sale_info</url>
+		<description>sets every shops sale informations</description>
+		<schedule>every 60 mins synchronized</schedule>
+		<timezone>Asia/Seoul</timezone>
+	</cron>
+	<cron>
+		<url>/shuffle_item_id</url>
+		<description>shuffles item ids</description>
+		<schedule>every 12 hours from 04:00 to 16:00</schedule>
+		<timezone>Asia/Seoul</timezone>
+	</cron>
+</cronentries>

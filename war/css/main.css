@@ -1,0 +1,651 @@
+html {
+    width: 100%;
+    height: 100%;
+    min-width: 1000px;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+div {
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}
+
+span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+img {
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+input {
+    padding: 0;
+}
+
+#home_header {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: #FFF;
+}
+
+#logo_box {
+    float: left;
+    height: 60px;
+    padding: 5px;
+    margin-left: 15px;
+    line-height: 60px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.text_span {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 100%;
+}
+
+.navbar-right {
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+#button_sign_out {
+    display: none;
+}
+
+#contents_background {
+    display: none;
+    position: fixed;
+    width: 80%;
+    min-width: 800px;
+    height: 100%;
+    margin-left: 10%;
+    background-color: rgba(0, 0, 0, 0.07);
+    z-index: -1;
+}
+
+#shops {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+
+.shop {
+    width: calc(100% - 20px);
+    height: 62px;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.shop:hover {
+    box-shadow: 3px 3px 1.5px rgba(0, 0, 0, 0.1);
+}
+
+.shop:active {
+    background-color: rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.shop_logo {
+    float: left;
+    width: 50px;
+}
+
+.shop_name {
+    float: left;
+    height: 50px;
+    margin-left: 10px;
+    line-height: 70px;
+    font-size: 20px;
+}
+
+.shop_logo_box {
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+
+table.shop_logo_box td {
+    vertical-align: middle;
+}
+
+.shop_menu {
+    float: right;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+.shop_poster {
+    float: left;
+    width: 338px;
+    height: 338px;
+    margin-top: 5px;
+}
+
+.shop_desc {
+    float: left;
+    width: calc(100% - 348px);
+    height: 338px;
+    margin-top: 5px;
+    padding: 10px;
+    margin-left: 10px;
+    overflow-y: scroll;
+}
+
+.shop_values {
+    float: left;
+    width: 258px;
+    height: 285px;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.shop_hq_head_box {
+    float: left;
+    width: 300px;
+    margin-top: 149px;
+    margin-right: 10px;
+}
+
+.shop_hq_detail_box {
+    float: left;
+    width: calc(100% - 310px);
+    height: 348px;
+}
+
+#shop_contents {
+    display: none;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+
+#shop_contents_head_box {
+    display: block;
+    width: calc(95% - 20px);
+    height: 100px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+#shop_contens_header {
+    display: block;
+    width: 95%;
+    height: 60px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.icon_span {
+    height: 18px;
+    display: inline-block;
+}
+
+#shop_contents_logo {
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+
+.shop_contents_logo_box {
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+
+#shop_contents_name_box {
+    float: left;
+    height: 80px;
+    margin-left: 10px;
+    line-height: 112px;
+    font-size: 30px;
+}
+
+#shop_contents_detail_box {
+    display: block;
+    width: 95%;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#shop_contents_intro_box {
+    float: left;
+    width: 400px;
+    height: 580px;
+    margin: 10px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+#shop_contents_flag_box {
+    float: left;
+    width: calc(100% - 430px);
+    height: 580px;
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+#shop_contents_poster {
+    width: 390px;
+    margin: 5px;
+}
+
+#shop_contents_desc {
+    width: 390px;
+    height: 130px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    overflow-y: scroll;
+}
+
+#shop_contents_items_box {
+    display: block;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#shop_contents_items_title {
+    width: calc(100% - 20px);
+    height: 60px;
+    padding-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    line-height: 100px;
+}
+
+#shop_contents_items {
+    width: calc(100% - 20px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item {
+    float: left;
+    width: 340px;
+    height: 580px;
+    padding: 5px;
+    margin: 5px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+.item_img {
+    width: 329px;
+    height: 349px;
+}
+
+.item_old_price {
+    text-decoration: line-through;
+}
+
+.item_sale {
+    color: red;
+}
+
+.item_dicount_info {
+    float: right;
+}
+
+.item_price_info {
+    float: left;
+    width: 100%;
+}
+
+.item_price {
+    float: right;
+}
+
+.item_reward {
+    float: left;
+}
+
+.item_desc {
+    height: 100px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    overflow-y: scroll;
+}
+
+#sign_in_warning {
+    color: red;
+}
+
+.button_shop_contents_head_edit {
+    float: right;
+    margin-left: 5px;
+}
+
+#shop_contents_head_box_edit {
+    display: none;
+    width: calc(95% - 20px);
+    height: 100px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+#shop_contents_name_edit {
+    height: 80px;
+}
+
+#shop_contents_name_box_edit {
+    float: left;
+    height: 80px;
+    margin-left: 10px;
+    line-height: 80px;
+    font-size: 30px;
+}
+
+#shop_contents_logo_file {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#shop_contents_logo_edit {
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+
+.button_shop_contents_detail_edit {
+    float: right;
+    margin-right: 5px;
+}
+
+#shop_contents_intro_box_edit {
+    display: none;
+    float: left;
+    width: 400px;
+    height: 580px;
+    margin: 10px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+#shop_contents_poster_edit {
+    width: 390px;
+    height: 390px;
+    margin: 5px;
+}
+
+#shop_contents_desc_edit {
+    width: 390px;
+    height: 125px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    overflow-y: scroll;
+}
+
+#shop_contents_poster_file {
+    position: absolute;
+    width: 390px;
+    height: 390px;
+    margin-top: 5px;
+    margin-left: 5px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.item_edit {
+    display: none;
+    float: left;
+    width: 340px;
+    height: 580px;
+    padding: 5px;
+    margin: 5px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+.button_item_edit {
+    float: right;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.item_desc_edit {
+    width: 100%;
+    height: 67px;
+}
+
+.item_img_edit_file {
+    position: absolute;
+    width: 349px;
+    height: 340px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.item_old_price_edit {
+    display: none;
+    float: right;
+}
+
+
+.item_sale_edit {
+    float: right;
+}
+
+.button_item_add {
+    float: right;
+    margin-top: 12px;
+}
+
+#add_item_warning {
+    color: red;
+}
+
+.inline_icon_span {
+    height: 35px;
+    margin-top: -10px;
+}
+
+.shop_add_head_box {
+    width: 100%;
+    height: 80px;
+}
+
+.btn-right {
+    float: right;
+}
+
+#shop_contents_logo_add {
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+
+#shop_contents_logo_add_file {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#shop_contents_name_add {
+    height: 80px;
+}
+
+#shop_contents_logo_edit_file {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.button_item_br {
+    float: right;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.button_item_br_scan {
+    float: right;
+    margin-top: 5px;
+    margin-left: 5px;
+    opacity: 0.2;
+}
+
+.button_item_br_scan:hover {
+    opacity: 0.5;
+}
+
+.button_item_br_expose {
+    position: absolute;
+    margin-left: 256px;
+    margin-top: 42px;
+}
+
+.dropzone {
+    width: 100%;
+    height: 350px;
+    overflow-y: scroll;
+}
+
+.dropzone_help {
+    display: block;
+    text-align: center;
+}
+
+.dropitem {
+    float: left;
+    width: 180px;
+    height: 240px;
+    margin: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    background-color: white;
+}
+
+.droppreview {
+    display: block;
+    width: 170px;
+    height: 190px;
+    margin-top: 4px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dropfilename {
+    display: block;
+    width: 170px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.dropitemcancel {
+    float: right;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dropitemcancel:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dropitemcancel:active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+
+.progress_bar {
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dropzone_browse {
+    display: block;
+    margin-top: 3px;
+    width: 170px;
+    height: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 25px;
+    text-align: center;
+    border: 1px solid #CCC;
+    border-radius: 2px;
+    background: white;
+}
+
+
+
+.dropzone_browse_input {
+    position: absolute;
+    width: 169px;
+    height: 25px;
+    margin-left: 325px;
+    margin-top: 4px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.dropzone_assist {
+    display: block;
+}
+
+.item_sex_type {
+    float: right;
+    margin-right: 5px;
+}
+
+#shop_contents_footer_dummy {
+    width: 100%;
+    height: 600px;
+}
+
+#shop_contents_items_search {
+    float: left;
+    margin-top: 9px;
+    width: 300px;
+    height: 40px;
+}

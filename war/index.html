@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Dalshop</title>
+        <link rel="stylesheet" href="./css/main.css" />
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.form.js"></script>
+        <script type="text/javascript" src="./js/dropform.js"></script>
+        <script type="text/javascript" src="./js/main.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALavhz39f7fZYFRlMqF04DOIluUE1WF1w&sensor=true"></script>
+        <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=init"></script>
+    </head>
+    <body>
+        <div id="waiting_dialog" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">잠시만 기다려주세요...</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="sign_in_form" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Sign In</h4>
+					</div>
+					<div class="modal-body">
+                        <div id="sign_in_wait" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-body">Sign In...</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="sign_in_email" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="sign_in_password" placeholder="Password">
+                        </div>
+					</div>
+					<div class="modal-footer">
+                        <span id="sign_in_warning"></span>
+						<button type="button" class="btn btn-primary" data-toggle="modal" onclick="signIn();">Sign In</button>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+        <div id="shop_adder" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Add Shop</h4>
+					</div>
+					<div class="modal-body">
+                        <div id="add_shop_wait" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-body">Uploading Shop...</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="shop_add_head_box">
+                            <form action="action" id="shop_contents_logo_add_form" method="post" enctype="multipart/form-data">
+                                <input type="file" name="image" id="shop_contents_logo_add_file" onchange="showPreview(this, 'shop_contents_logo_add')">
+                            </form>
+                            <table class="shop_contents_logo_box">
+                                <tr><td><img id="shop_contents_logo_add" src="logo_url"></td></tr>
+                            </table>
+                            <div id="shop_contents_name_box_edit"><input type="text" id="shop_contents_name_add" placeholder="name"></div>
+                        </div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-toggle="modal" onclick="addShop()">
+                            <span class="glyphicon glyphicon-ok icon_span"></span> Save
+                        </button>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+        <div id="item_adder" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Add Items</h4>
+					</div>
+					<div class="modal-body">
+                        <div id="add_item_wait" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-body">Uploading Items...</div>
+                                    <div class="progress progress-striped active progress_bar">
+                                        <div class="progress-bar" id="add_item_progress"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <form action="/item_sheet" method="post" enctype="multipart/form-data" id="add_item_sheet_form">
+                            <div class="form-group">
+                                <p>양식에 맞는 엑셀시트를 업로드할 수 있습니다. 샘플시트는 <a href="raw/sample_sheet.xlsx">이곳에서</a> 받을 수 있습니다.</p>
+                                <label for="exampleInputFile">Excel Sheet</label>
+                                <input type="file" name="sheetFile" id="add_item_sheet_file">
+                                <input type="hidden" name="shopId" id="add_item_shop_id">
+                                <p class="help-block">
+                                    .xls 또는 .xlsx 포맷을 지원합니다. <br/>
+                                    <span class="glyphicon glyphicon-warning-sign icon_span"></span>
+                                    품번 (바코드) 가 같은 제품은 덮어쓰기 합니다. <br/><br/>
+                                    이미지 파일들을 아래에 추가하십시오. 아이템의 품번 (바코드) 과 이미지 파일의 이름이 일치해야합니다.
+                                </p>
+                            </div>
+                            
+                            <div class="dropzone well">
+                                <div class="dropzone_assist">
+                                    <span class="dropzone_help">파일을 끌어서 여기에 놓으십시오.</span>
+                                    <input class="dropzone_browse_input" type="file" onchange="addFromFileBrowser(this)" multiple>
+                                    <div class="dropzone_browse">혹은 파일브라우저 열기</div>
+                                </div>
+                                <div class="dropzone_items"></div>
+                            </div>
+                        </form>
+					</div>
+					<div class="modal-footer">
+                        <span id="add_item_warning"></span>
+						<button type="button" class="btn btn-primary" data-toggle="modal" onclick="uploadItemSheet();">
+                            <span class="glyphicon glyphicon-ok icon_span"></span> Save
+                        </button>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+        <div id="modal_base" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">title</h4>
+					</div>
+					<div class="modal-body">
+                        body
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-toggle="modal" onclick="">button</button>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+        <!-- display view -->
+        
+        <header id="home_header">
+            <div id="logo_box" onclick="goToMain();"><span class="text_span">Dalshop Admin</span></div>
+            <ul class="nav nav-pills navbar-right" id="button_sign_out">
+                <li class="active"><a href="javascript:signOut();"><span class="glyphicon glyphicon-off icon_span"></span> 로그아웃 </a></li>
+            </ul>
+        </header>
+        
+        <section id="shops">
+        </section>
+        
+        <section id="shop_contents">
+            <header id="shop_contens_header">
+                <button type="button" class="btn btn-primary" data-toggle="modal" onclick="toShopsFromContents();">
+                    <span class="glyphicon glyphicon-chevron-left icon_span"></span> 뒤로
+                </button>
+                <button type="button" class="btn btn-primary btn-right" data-toggle="modal" onclick="deleteShop();">
+                    <span class="glyphicon glyphicon-trash icon_span"></span> 삭제
+                </button>
+            </header>
+            
+            <div id="shop_contents_head_box">
+                <table class="shop_contents_logo_box">
+                    <tr><td><img id="shop_contents_logo" src="logo_url"></td></tr>
+                </table>
+                <div id="shop_contents_name_box"><span class="text_span" id="shop_contents_name">name</span></div>
+                <button type="button" class="btn btn-primary button_shop_contents_head_edit" data-toggle="modal" onclick="editModeShopHead();">
+                    <span class="glyphicon glyphicon-pencil icon_span"></span> 수정
+                </button>
+            </div>
+            
+            <div id="shop_contents_head_box_edit">
+                <form action="action" id="shop_contents_logo_edit_form" method="post" enctype="multipart/form-data">
+                    <input type="file" name="image" id="shop_contents_logo_edit_file" onchange="showPreview(this, 'shop_contents_logo_edit')">
+                </form>
+                <table class="shop_contents_logo_box">
+                    <tr><td><img id="shop_contents_logo_edit" src="logo_url"></td></tr>
+                </table>
+                <div id="shop_contents_name_box_edit"><input type="text" id="shop_contents_name_edit"></div>
+                <button type="button" class="btn btn-primary button_shop_contents_head_edit" data-toggle="modal" onclick="editShopHead();">
+                    <span class="glyphicon glyphicon-ok icon_span"></span> 저장
+                </button>
+                <button type="button" class="btn btn-primary button_shop_contents_head_edit" data-toggle="modal" onclick="cancelEditShopHead();">
+                    <span class="glyphicon glyphicon-remove icon_span"></span> 취소
+                </button>
+            </div>
+            
+            <div id="shop_contents_detail_box">
+                <div id="shop_contents_intro_box">
+                    <img id="shop_contents_poster" src="image_url"/>
+                    <div id="shop_contents_desc">description</div>
+                    <button type="button" class="btn btn-primary button_shop_contents_detail_edit" data-toggle="modal" onclick="editModeShopDetail();">
+                        <span class="glyphicon glyphicon-pencil icon_span"></span> 수정
+                    </button>
+                </div>
+                
+                <div id="shop_contents_intro_box_edit">
+                    <form action="action" id="shop_contents_poster_form" method="post" enctype="multipart/form-data">
+                        <input type="file" name="image" id="shop_contents_poster_file" onchange="showPreview(this, 'shop_contents_poster_edit')">
+                    </form>
+                    <img id="shop_contents_poster_edit" src="image_url"/>
+                    <textarea id="shop_contents_desc_edit">description</textarea>
+                    <button type="button" class="btn btn-primary button_shop_contents_detail_edit" data-toggle="modal" onclick="editShopDetail();">
+                        <span class="glyphicon glyphicon-ok icon_span"></span> 저장
+                    </button>
+                    <button type="button" class="btn btn-primary button_shop_contents_detail_edit" data-toggle="modal" onclick="cancelEditShopDetail();">
+                        <span class="glyphicon glyphicon-remove icon_span"></span> 취소
+                    </button>
+                </div>
+                
+                <div id="shop_contents_flag_box"></div>
+            </div>
+            
+            <div id="shop_contents_items_box">
+                <div id="shop_contents_items_title">
+                    <span style="float: left; margin-top: 18px; margin-right: 10px;">Items</span>
+                    <input id="shop_contents_items_search" type="text" placeholder="검색"/>
+                    <button type="button" class="btn btn-primary button_item_add" data-toggle="modal" onclick="showItemAdder();">
+                        <span class="glyphicon glyphicon-plus icon_span"></span> 추가
+                    </button>
+                </div>
+                <div id="shop_contents_items">
+                </div>
+            </div>
+            
+            <div id="shop_contents_footer_dummy"></div>
+        </section>
+    </body>
+</html>

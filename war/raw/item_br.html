@@ -1,0 +1,25 @@
+<div class="item" id="item_${index}">
+    <div id="item_box_${index}">
+        <img class="item_img" id="item_img_${index}" src="${item_img}" />
+        <div class="item_name" id="item_name_${index}">${item_name}</div>
+        <div class="item_sex_type" id="item_type_${index}">${item_type}</div>
+        <div class="item_sex_type" id="item_sex_${index}">${item_sex}</div>
+        <div class="item_barcode" id="item_barcode_${index}">
+            ${item_barcodeId}
+        </div>
+        <div class="item_desc" id="item_desc_${index}">${item_desc}</div>
+        <div class="item_dicount_info"><span class="item_sale" id="item_sale_${index}">${item_sale}</span> <span class="item_old_price" id="item_old_price_${index}">${item_oldPrice}</span></div>
+        <div class="item_price_info"><span class="item_reward" id="item_reward_${index}">reward: ${item_reward}</span> <span class="item_price" id="item_price_${index}">${item_price}</span></div>
+        <button type="button" class="btn btn-primary button_item_br" id="button_item_hide_${index}" data-toggle="modal" onclick="hideItem(${index});">
+            <span class="glyphicon glyphicon-cloud icon_span"></span> 숨김
+        </button>
+<!--
+        <button type="button" class="btn btn-primary button_item_br_scan" id="button_item_scan_${index}" data-toggle="modal" onclick="toggleScanItem(${index});">
+            <span class="glyphicon glyphicon-usd icon_span"></span> 스캔
+        </button>
+-->
+    </div>
+    <button type="button" style="display: none;" class="btn btn-primary button_item_br_expose" id="button_item_expose_${index}" data-toggle="modal" onclick="exposeItem(${index});">
+        <span class="glyphicon glyphicon-share-alt icon_span"></span> 노출
+    </button>
+</div>

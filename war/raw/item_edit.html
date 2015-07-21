@@ -1,0 +1,47 @@
+<div class="item_edit" id="item_edit_${index}">
+    <form action="action" id="item_img_edit_form_${index}" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" class="item_img_edit_file" id="item_img_edit_file_${index}" onchange="showPreview(this, 'item_img_edit_${index}')">
+    </form>
+    <img class="item_img" id="item_img_edit_${index}" src="img_src" />
+    <div class="item_name">
+        <input id="item_name_edit_${index}" type="text" placeholder="name"/>
+        <select id="item_sex_edit_${index}">
+            <option value="0">성별없음</option>
+            <option value="1">여성제품</option>
+            <option value="2">남성제품</option>
+        </select>
+    </div>
+    <div class="item_barcode">
+        <input id="item_barcode_edit_${index}" type="text" placeholder="barcode"/>
+        <select id="item_type_edit_${index}">
+            <option value="100">의류</option>
+            <option value="110">의류-상의</option>
+            <option value="111">의류-외투</option>
+            <option value="120">의류-바지</option>
+            <option value="121">의류-치마</option>
+            <option value="130">의류-드레스</option>
+            <option value="140">의류-속옷</option>
+            <option value="200">신발</option>
+            <option value="300">가방</option>
+            <option value="400">액세서리</option>
+            <option value="500">전자제품</option>
+            <option value="600">화장품</option>
+            <option value="700">모자</option>
+        </select>
+    </div>
+    <div><textarea class="item_desc_edit" id="item_desc_edit_${index}">desc</textarea></div>
+    <div class="item_dicount_info">
+        <input class="item_old_price_edit" id="item_old_price_edit_${index}" type="text" placeholder="old price"/>
+        <div class="item_sale_edit"><input id="item_sale_edit_${index}" type="checkbox" onchange="onItemSaleToggle(this, ${index});" /> sale</div>
+    </div>
+    <div class="item_price_info">
+        <input class="item_reward" id="item_reward_edit_${index}" type="text" placeholder="reward"/>
+        <input class="item_price" id="item_price_edit_${index}" type="text" placeholder="price" />
+    </div>
+    <button type="button" class="btn btn-primary button_item_edit" data-toggle="modal" onclick="editItem(${index});">
+        <span class="glyphicon glyphicon-ok icon_span"></span> 저장
+    </button>
+    <button type="button" class="btn btn-primary button_item_edit" data-toggle="modal" onclick="cancelEditItem(${index});">
+        <span class="glyphicon glyphicon-remove icon_span"></span> 취소
+    </button>
+</div>

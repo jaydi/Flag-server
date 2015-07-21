@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<servlet>
+		<servlet-name>SystemServiceServlet</servlet-name>
+		<servlet-class>com.google.api.server.spi.SystemServiceServlet
+		</servlet-class>
+		<init-param>
+			<param-name>services</param-name>
+			<param-value>com.flag.engine.apis.Apps,com.flag.engine.apis.Flags,com.flag.engine.apis.Images,com.flag.engine.apis.Items,com.flag.engine.apis.Likes,com.flag.engine.apis.Logs,com.flag.engine.apis.Providers,com.flag.engine.apis.Redeems,com.flag.engine.apis.Rewards,com.flag.engine.apis.Shops,com.flag.engine.apis.UserInfos,com.flag.engine.apis.Users
+			</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet>
+		<servlet-name>UploadImage</servlet-name>
+		<servlet-class>com.flag.engine.servelets.UploadImage</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ServeImage</servlet-name>
+		<servlet-class>com.flag.engine.servelets.ServeImage</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ItemSheet</servlet-name>
+		<servlet-class>com.flag.engine.servelets.ItemSheet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>PairUserShop</servlet-name>
+		<servlet-class>com.flag.engine.servelets.PairUserShop</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>SetShopSaleInfo</servlet-name>
+		<servlet-class>com.flag.engine.servelets.SetShopSaleInfo
+		</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ShuffleItemId</servlet-name>
+		<servlet-class>com.flag.engine.servelets.ShuffleItemId</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>SystemServiceServlet</servlet-name>
+		<url-pattern>/_ah/spi/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>UploadImage</servlet-name>
+		<url-pattern>/upload</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ServeImage</servlet-name>
+		<url-pattern>/serve</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ItemSheet</servlet-name>
+		<url-pattern>/item_sheet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>PairUserShop</servlet-name>
+		<url-pattern>/pair_user_shop</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>SetShopSaleInfo</servlet-name>
+		<url-pattern>/set_shop_sale_info</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ShuffleItemId</servlet-name>
+		<url-pattern>/shuffle_item_id</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+	<!-- Root application must use HTTPS -->
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+
+</web-app>
